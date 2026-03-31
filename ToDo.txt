@@ -1,0 +1,9 @@
+1. Provided url --------
+2. Domain Name--------
+3. Domain Register Date ------
+3. Domain Age -------
+4. Domain expiry --------
+5. Hosting provider  -------
+6. Server type -------
+7. SSl  ------
+7. Associated Domains/softwares ------------
