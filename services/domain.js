@@ -2,16 +2,16 @@
 
 async function getDomain(hostname){
     try {
-        console.log("In getDomain")
+        // console.log("In getDomain")
         const month = ["Jan" , "Feb" , 'March' , "Apr" , "May" , "June" , "July" , "Aug" , "sep" , "Oct" , "Nov" , "Dec"]
 
         const data = hostname 
         const dataArr = data.split(".")
         const domain = dataArr.length <= 2 ? data : dataArr.slice(-2).join(".")  // To get the domain only and remove the unnecessary parts
 
-        const res = await fetch(`https://rdap.org/domain/${domain}` )
+        const res = await fetch(`https://rdap.org/domain/${domain}`)
         const body = await res.json()
-        console.log("Fetched Domain info")
+        // console.log(`Fetched Domain info: ${JSON.stringify(body,null,2)}`)
         
         const domainName = body.ldhName
         const registration = body.events?.find((event) => event.eventAction === 'registration') //we get objct of registration 
@@ -29,7 +29,7 @@ async function getDomain(hostname){
         //Calc Age
         const currentYear = new Date().getFullYear()
         const age = currentYear - registrationYear
-        console.log("Success In Domain fetching")
+        // console.log("Success In Domain fetching")
         
         return {
             domain:domainName , 
@@ -41,8 +41,7 @@ async function getDomain(hostname){
         }
 
     } catch (error) {
-        console.log(error);
-        
+        return false
     }
 }
 

@@ -8,7 +8,7 @@ const getProduct = require("./services/ProductsList")
 const getRedirectUrl = require("./utils/redirect")
 
 const client = new Client(   //Creating a new client for our bot
-    {
+    {                        //A client is nothing but a user
         intents: [
             GatewayIntentBits.Guilds,
             GatewayIntentBits.GuildMessages,      // Its permissions
@@ -23,22 +23,22 @@ client.on("messageCreate", (message) => {
 })
 
 client.on("interactionCreate", async (interaction) => {
-    if (interaction.commandName == "urlfetcher") {
+    if (interaction.commandName == "urlfetcher") {   //Command should be url fetcher
         try {
             const url = interaction.options.getString('url')
 
             await interaction.deferReply()    // Our reply might take seconds , so it commands it to wait for response
 
-            const redirectUrl = await getRedirectUrl(url)
-            const urlObj = await UrlValidator(redirectUrl)   // validates the provided url 
+            const redirectUrl = await getRedirectUrl(url)    // To pass any kind of redirects
+            const urlObj = UrlValidator(redirectUrl)   // validates the provided url and extracts the data like hostname
             if (urlObj == false)
                 return await interaction.editReply({ content: "Invalid url provided! 🤖" })
 
             const [titleInfo, domainInfo, hostInfo] = await Promise.all([getMetadata(urlObj.link), getDomain(urlObj.hostname), HostingProvider(urlObj.link, urlObj.hostname)]);
-            console.log(urlObj.hostname)
-            console.log(domainInfo)
-            console.log(hostInfo)
-            console.log(titleInfo)
+            // console.log(urlObj.hostname)
+            // console.log(domainInfo)
+            // console.log(hostInfo)
+            // console.log(titleInfo)
 
             const ProductsList = await getProduct(hostInfo.Organization)
             console.log(ProductsList)

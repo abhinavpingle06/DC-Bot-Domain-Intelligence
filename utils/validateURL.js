@@ -5,9 +5,8 @@ function UrlValidator(url){
     try {
         urlObj = new URL(url)
         console.log("Successfully converted into url object");
-        // console.log(urlObj);
-        
-        
+        // console.log(`We Got url: ${url} & after validation:${urlObj.hostname} ${urlObj.href} ${urlObj.origin}`);
+   
         return {
             "link":urlObj.href ,
             "origin": urlObj.origin ,

@@ -3,19 +3,19 @@ const cheerio = require("cheerio")
 
 async function getMetadata(url) {
     try {
-        console.log("Succcessfully In metadata")
+        // console.log("Succcessfully In metadata")
         const res = await fetch(url, {
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
             }, signal: AbortSignal.timeout(8000)
         }) //timeout is useed to tell how many max seconds to wait for response.
         
-        console.log("Succcessfully fetch")
+        // console.log("Succcessfully fetch")
         const html = await res.text() //This provides the html of whole page 
         const $ = cheerio.load(html)
-        const metadata = $("title").text().trim()
+        const metadata = $("title").text().trim() || "Failed to fetch Title"
         console.log(metadata)
-        console.log("Successsfully Fetched the Title");
+        // console.log("Successsfully Fetched the Title");
 
         return { data: metadata } //This metadata will be send forward to gemini to provide some info about the link
 
