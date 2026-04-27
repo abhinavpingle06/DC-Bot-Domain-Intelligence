@@ -25,22 +25,6 @@ Domain Metadata Fetcher is a Discord bot that retrieves and displays detailed me
 
 ---
 
-## 📂 Project Structure
-
-```id="x9a1ks"
-domain-metadata-bot/
-│── src/                # Bot source code
-│── commands/           # Command handlers
-│── services/           # API and metadata logic
-│── utils/              # Helper functions
-│── config/             # Configuration files
-│── .env                # Environment variables
-│── package.json / requirements.txt
-│── README.md
-```
-
----
-
 ## ⚙️ Installation
 
 1. Clone the repository
