@@ -1,7 +1,5 @@
 # 🤖 Domain Metadata Fetcher (Discord Bot)
 
-## 📌 Overview
-
 Domain Metadata Fetcher is a Discord bot that retrieves and displays detailed metadata about any given domain. It helps users quickly access useful information such as domain registration details, hosting data, and technical insights directly within Discord.
 
 ---
