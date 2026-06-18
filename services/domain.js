@@ -36,6 +36,7 @@ async function getDomain(hostname){
             registryMonth : month[registrationMonth] , 
             registryYear : registrationYear,
             currAge : age , 
+            lastUpdation: lastUpdation,
             expiryMonth : month[expirationMonth],
             expiryYear : expirationYear 
         }
